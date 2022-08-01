@@ -44,6 +44,7 @@
       >
         Submit
       </button></td>
+      
                 </tr>
             </table>
         </form>
@@ -66,10 +67,12 @@
            Category:<b>{{"Other"}}</b>
         </div>
         <div class="m-10 h-52 w-52 border-4 border-indigo-600" v-for="(prod) in filteredRecords" :key="prod">
+        <!-- <div v-if="prod.category=='Cloths'"><img src="Assetss/guiter.jpg" class="h-45 w-45"></div> -->
         <img src="Assetss/guiter.jpg" class="h-45 w-45">
+        
            product Name: <b>{{prod.productname}}</b>
            prize:  <b>{{prod.prize}}</b>
-           Category:{{prod.category}}
+           Category:<b>{{prod.category}}</b>
         </div>
         
     </div>
