@@ -44,14 +44,16 @@
       >
         Submit
       </button></td>
+      
                 </tr>
             </table>
         </form>
 
     </div>
-    <div class="bg-gray-300 col-span-2 ">
-       
-       <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-50 border border-slate-300 rounded-md m-10 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for Category..." type="text" @input="searchInput($event)"  name="search"/>
+    <div class="bg-gray-300 col-span-2">
+       <div> <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-50 border border-slate-300 rounded-md m-5 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for Category..." type="text" @input="searchInput($event)"  name="search"/></div><br>
+       <br>
+      <div class="flex">
         <div class="m-10 h-52 w-52 border-4 border-indigo-600">
         <img src="Assetss/guiter.jpg" class="h-45 w-45">
            product Name: <b>{{"Guitar"}}</b>
@@ -65,12 +67,15 @@
            Category:<b>{{"Other"}}</b>
         </div>
         <div class="m-10 h-52 w-52 border-4 border-indigo-600" v-for="(prod) in filteredRecords" :key="prod">
+        <!-- <div v-if="prod.category=='Cloths'"><img src="Assetss/guiter.jpg" class="h-45 w-45"></div> -->
         <img src="Assetss/guiter.jpg" class="h-45 w-45">
+        
            product Name: <b>{{prod.productname}}</b>
            prize:  <b>{{prod.prize}}</b>
-           Category:{{prod.category}}
+           Category:<b>{{prod.category}}</b>
         </div>
         
+    </div>
     </div>
 </div>
 
