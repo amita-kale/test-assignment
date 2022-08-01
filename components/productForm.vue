@@ -3,6 +3,7 @@
     <div class="border-solid border-2 border-amber-600 drop-shadow-md bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 ">
 
         <form>
+             <h1 style="color: red" class="font-bold text-3xl p-6">Add product</h1>
             <table>
                 <tr>
                     <td><label>Product Name :</label></td>
@@ -31,7 +32,7 @@
           via-purple-500
           to-pink-500
         "
-       
+       v-on:click="createNewCard()"
       >
         Submit
       </button></td>
@@ -40,6 +41,13 @@
         </form>
 
     </div>
-    <div class="bg-gray-300 col-span-2">hello</div>
+    <div class="bg-gray-300 col-span-2">
+        <div class="m-10 h-52 w-52 border-4 border-indigo-600">hi</div>
+    </div>
 </div>
 </template>
+<script>
+export default {
+   name:'productForm'
+}
+</script>
