@@ -1,4 +1,6 @@
 <template>
+<div>
+<nav class="px-2 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"></nav>
 <div class=" grid gap-x-7  grid-cols-3 h-screen" >
     <div class="border-solid border-2 border-amber-600 drop-shadow-md bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 ">
 
@@ -15,7 +17,12 @@
                 </tr>
                  <tr>
                     <td><label>Category :</label></td>
-                    <td><input type="text" class="bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 m-5"></td>
+                    <!-- <td><input type="text" class="bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 m-5"></td> -->
+                    <select v-model="product.category">
+                        <option>Cloths</option>
+                         <option>Shoes</option>
+                          <option>Other</option>
+                    </select>
                 </tr>
                 <tr>
                     <td>
@@ -41,13 +48,26 @@
         </form>
 
     </div>
-    <div class="bg-gray-300 col-span-2">
+    <div class="bg-gray-300 col-span-2 flex">
+        <div class="m-10 h-52 w-52 border-4 border-indigo-600">
+        <img src="Assetss/guiter.jpg" class="h-45 w-45">
+           product Name: <b>{{"Guitar"}}</b>
+           prize:  <b>{{"1000"}}</b>
+        </div>
+         <div class="m-10 h-52 w-52 border-4 border-indigo-600">
+        <img src="Assetss/guiter.jpg" class="h-45 w-45">
+           product Name: <b>{{"Guitar"}}</b>
+           prize:  <b>{{"1000"}}</b>
+        </div>
         <div class="m-10 h-52 w-52 border-4 border-indigo-600" v-for="(prod) in products" :key="prod">
         <img src="Assetss/guiter.jpg" class="h-45 w-45">
-           product Name: {{prod.productname}}
-           prize:  {{prod.prize}}
+           product Name: <b>{{prod.productname}}</b>
+           prize:  <b>{{prod.prize}}</b>
+           {{prod.category}}
         </div>
+        
     </div>
+</div>
 </div>
 </template>
 <script>
@@ -58,7 +78,8 @@ export default {
     products: [],
       product: {
         productname: null,
-        prize: null
+        prize: null,
+        category:null
       },
     };
   },
