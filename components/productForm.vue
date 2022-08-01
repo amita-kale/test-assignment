@@ -7,11 +7,11 @@
             <table>
                 <tr>
                     <td><label>Product Name :</label></td>
-                    <td><input type="text" class="bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 m-5"></td>
+                    <td><input type="text" v-model="product.productname" class="bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 m-5"></td>
                 </tr>
                  <tr>
                     <td><label>Price :</label></td>
-                    <td><input type="text" class="bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 m-5"></td>
+                    <td><input type="number" v-model="product.prize" class="bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 m-5"></td>
                 </tr>
                  <tr>
                     <td><label>Category :</label></td>
@@ -20,7 +20,7 @@
                 <tr>
                     <td>
                     <button
-        type="submit"
+        type="button"
         
         class="
           border-solid
@@ -42,12 +42,31 @@
 
     </div>
     <div class="bg-gray-300 col-span-2">
-        <div class="m-10 h-52 w-52 border-4 border-indigo-600">hi</div>
+        <div class="m-10 h-52 w-52 border-4 border-indigo-600" v-for="(prod) in products" :key="prod">
+        <img src="Assetss/guiter.jpg" class="h-45 w-45">
+           product Name: {{prod.productname}}
+           prize:  {{prod.prize}}
+        </div>
     </div>
 </div>
 </template>
 <script>
 export default {
-   name:'productForm'
+   name:'productForm',
+   data() {
+    return {
+    products: [],
+      product: {
+        productname: null,
+        prize: null
+      },
+    };
+  },
+  methods: {
+    createNewCard(){
+         this.products.push(this.product);
+    }
+  }
+
 }
 </script>
