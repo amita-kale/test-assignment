@@ -1,3 +1,13 @@
 <template>
-    <h1>Hello</h1>
-</template>>
+   
+    <productForm></productForm>
+</template>
+<script>
+
+import productForm from '/components/ProductForm.vue';
+
+export default {
+    name:'index',
+    components:{productForm}
+}
+</script>
