@@ -55,13 +55,13 @@
                     class="sm:relative w-full sm:flex  sm:  items-center sm:justify-between py-2  bg-purple-300 text-black-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
                     <div class="sm:container-fluid w-full sm:flex  items-center justify-between px-2">
                         <div class="sm:container-fluid">
-                            <a class="sm:text-xl sm:p-2 m-4 text-white hover:bg-blue-300"
+                            <a class="sm:text-xl sm:p-2 m-4 cursor-pointer text-white hover:bg-blue-300"
                                 @click="selectedCategory = 'all'">All</a>
-                            <a class="sm:text-xl sm:p-2 m-4 text-white hover:bg-blue-300"
+                            <a class="sm:text-xl sm:p-2 m-4 text-white cursor-pointer hover:bg-blue-300"
                                 @click="selectedCategory = 'Shoes'">Shoes</a>
-                            <a class="sm:text-xl sm:p-2 m-3 text-white hover:bg-blue-300"
+                            <a class="sm:text-xl sm:p-2 m-3 text-white cursor-pointer hover:bg-blue-300"
                                 @click="selectedCategory = 'Cloths'">Cloths</a>
-                            <a class="sm:text-xl sm:p-2 m-4 text-white hover:bg-red-300"
+                            <a class="sm:text-xl sm:p-2 m-4 cursor-pointer text-white hover:bg-red-300"
                                 @click="selectedCategory = 'Guiter'">Guiter</a>
                             <input
                                 class="placeholder:italic  bg-white w-50 border border-slate-300 rounded-md m-5 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -161,11 +161,11 @@ export default {
 
                 this.resetForm();
             }
-            //    else if(!isNaN(this.product.prize) || this.product.prize==""){
-            //             alert("Please Enter number");
+               else if(this.product.prize==""){
+                        alert("Please Enter prize");
 
-            //             this.resetForm();
-            //     }
+                        this.resetForm();
+                }
             else if (this.product.category == "") {
                 alert("Please select category");
 
