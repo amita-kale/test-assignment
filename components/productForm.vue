@@ -21,23 +21,26 @@
                     </tr>
                     <tr>
                         <td><label>Category :</label></td>
-                        <select v-model="product.category" @change="onChangeOfCategory($event)">
+                        <select v-model="product.category">
                             <option value='Cloths'>Cloths</option>
                             <option value="Shoes">Shoes</option>
                             <option value="Guiter">Guiter</option>
                         </select>
+                        <!-- {{e="White"}} -->
                     </tr>
                       <tr>
                         <td><label>Color :</label></td>
-                        <select v-model="product.color" @change="onChangeOfCategory($event)">
-                            <option value='yellow'>yellow</option>
-                            <option value="Pink">Pink</option>
-                            <option value="Brown">Brown</option>
+                        <select v-model="product.color" >
+                        <!-- @change="onChangeOfCategory($event,e)" -->
+                            <option value="White">White</option>
                             <option value='Yellow'>Yellow</option>
                             <option value="Black">Black</option>
                             <option value="Pink">Pink</option>
+                             <option value="Brown">Brown</option>
+                            <option value='Blue'>Blue</option>
                         </select>
                     </tr>
+                    
                     <tr>
                         <td>
                             <button type="button" class="
@@ -87,7 +90,7 @@
             </div>
             <br>
             <div class="flex">
-                {{showAllProducts}}
+                <!-- {{showAllProducts}} -->
                 <div class="m-10 h-52 w-52 border-4 border-indigo-600" v-for="(prod, prodIndex) in filteredRecords" :key="'id' + prodIndex">
                     <img :src="prod.img" class="h-32 w-52">
                     product Name: <b>{{ prod.productname }}</b>
@@ -102,6 +105,7 @@
 
         </div>
     </div>
+    <!-- {{onChangeOfCategory($event,e)}} -->
 
 </template>
 <script>
@@ -110,8 +114,8 @@ export default {
     name: 'productForm',
     data() {
         return {
+            
             products: [],
-           
             selectedCategory: 'all',
             product: {
                 productname: null,
@@ -120,6 +124,8 @@ export default {
                 img: '',
                 color:''
             },
+            // e: product.color,
+            // eve: product.category,
             searchText: '',
         };
     },
@@ -159,16 +165,28 @@ export default {
                 this.resetForm();
             }
             else {
-                  this.products.push(this.product);
-                // this.products.push(user);
+
+                this.isProperty=false;
+                this.e = this.product.color;
+                this.eve = this.product.category
+                this.onChangeOfCategory(this.eve,this.e);
+               if(this.isProperty==true){
+                alert("product not available")
+               }
+               else{
+                   this.products.push(this.product);
+
+               }
 
             }
+            
              sessionStorage.setItem("new", JSON.stringify(this.products));
 
             this.product = {
                 productname: '',
                 prize: '',
-                category: ''
+                category: '',
+                color:''
             }
         },
         
@@ -176,25 +194,43 @@ export default {
             this.product = {
                 productname: '',
                 prize: '',
-                category: ''
+                category: '',
+                color:''
             }
         },
-        onChangeOfCategory(event) {
-            console.log(event.target.value);
-            if (event.target.value == 'Cloths' && event.target.value=='Red') {
+        onChangeOfCategory() {
+            // console.log(eve.target.value);
+                
+
+            console.log(this.eve,this.e);
+            // if ((eve.target.value == 'Cloths') && (e.target.value=='White')) {
+            if ((this.eve == 'Cloths') && (this.e=='White')) {
+                console.log(this.eve,this.e);
                 this.product.img = 'Assetss/cloths.jpg';
+                
             }
-            else if (event.target.value == 'Cloths' && event.target.value=='yellow'){
+            else if ((this.eve == 'Cloths') && (this.e=='Yellow')){
                  this.product.img = 'Assetss/cloth.jpg';
+                  
             }
-            // else if (event.target.value == 'Shoes'||event.target.value=='Red') {
-            //     this.product.img = 'Assetss/shoes.jpg';
-            // }
-            // else if (event.target.value == 'Guiter'||event.target.value=='Red') {
-            //     this.product.img = 'Assetss/guiter.jpg';
-            // }
+           else if ((this.eve == 'Shoes') && (this.e=='Black')) {
+                this.product.img = 'Assetss/shoess.jpg';
+            }
+            else if ((this.eve == 'Shoes') && (this.e=='Pink')) {
+                 this.product.img = 'Assetss/shoes.jpg';
+            }
+            else if ((this.eve == 'Guiter') && (this.e=='Brown')) {
+                 this.product.img = 'Assetss/guiter.jpg';
+            }
+             else if ((this.eve == 'Guiter') && (this.e=='Blue')) {
+                this.product.img = 'Assetss/guitar.jpg';
+            }
+            else{
+                console.log("product not available");
+                this.isProperty=true;
+            }
         },
-        onChangeOfColor(event){},
+       
         
         searchInput(evt) {
             this.searchText = evt.target.value;
