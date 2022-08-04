@@ -26,7 +26,7 @@
                             <option value="Shoes">Shoes</option>
                             <option value="Guiter">Guiter</option>
                         </select>
-                        <!-- {{e="White"}} -->
+                       
                     </tr>
                       <tr>
                         <td><label>Color :</label></td>
@@ -90,7 +90,7 @@
             </div>
             <br>
             <div class="flex">
-                <!-- {{showAllProducts}} -->
+                {{showAllProducts}}
                 <div class="m-10 h-52 w-52 border-4 border-indigo-600" v-for="(prod, prodIndex) in filteredRecords" :key="'id' + prodIndex">
                     <img :src="prod.img" class="h-32 w-52">
                     product Name: <b>{{ prod.productname }}</b>
@@ -105,8 +105,7 @@
 
         </div>
     </div>
-    <!-- {{onChangeOfCategory($event,e)}} -->
-
+   
 </template>
 <script>
 export default {
@@ -124,8 +123,7 @@ export default {
                 img: '',
                 color:''
             },
-            // e: product.color,
-            // eve: product.category,
+            
             searchText: '',
         };
     },
@@ -161,6 +159,11 @@ export default {
                 }
             else if (this.product.category == "") {
                 alert("Please select category");
+
+                this.resetForm();
+            }
+             else if (this.product.color == "") {
+                alert("Please select color");
 
                 this.resetForm();
             }
@@ -231,7 +234,6 @@ export default {
             }
         },
        
-        
         searchInput(evt) {
             this.searchText = evt.target.value;
         }
